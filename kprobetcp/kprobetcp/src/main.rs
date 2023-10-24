@@ -41,8 +41,9 @@ async fn main() -> Result<(), anyhow::Error> {
     program.attach("tcp_connect", 0)?;
 
     let map = HashMap::try_from(bpf.map_mut("CONNECTIONS").unwrap())?;
-    for (pid, count) in map.keys().map(|key| (key, map.get((&key).into(), 0).unwrap())) {
-        println!("pid: {:?}, count: {:?}", pid, count);
+    for item in map.iter() {
+        let (key, value) = item.unwrap()?;
+        info!("{}: {}", key, value);
     }
 
     info!("Waiting for Ctrl-C...");
