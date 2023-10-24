@@ -1,15 +1,15 @@
 [package]
-name = "tcp-v4-connect-ebpf"
+name = "kprobetcp-ebpf"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
 aya-bpf = { git = "https://github.com/aya-rs/aya" }
 aya-log-ebpf = { git = "https://github.com/aya-rs/aya" }
-tcp-v4-connect-common = { path = "../tcp-v4-connect-common" }
+kprobetcp-common = { path = "../kprobetcp-common" }
 
 [[bin]]
-name = "tcp-v4-connect"
+name = "kprobetcp"
 path = "src/main.rs"
 
 [profile.dev]

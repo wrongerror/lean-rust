@@ -1,3 +1,0 @@
-{
-  "rust-analyzer.linkedProjects": ["Cargo.toml", "tcp-v4-connect-ebpf/Cargo.toml"]
-}

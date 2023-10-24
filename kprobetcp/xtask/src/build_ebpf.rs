@@ -40,7 +40,7 @@ pub struct Options {
 }
 
 pub fn build_ebpf(opts: Options) -> Result<(), anyhow::Error> {
-    let dir = PathBuf::from("tcp-v4-connect-ebpf");
+    let dir = PathBuf::from("kprobetcp-ebpf");
     let target = format!("--target={}", opts.target);
     let mut args = vec![
         "build",

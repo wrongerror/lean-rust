@@ -1,5 +1,5 @@
 [package]
-name = "tcp-v4-connect-common"
+name = "kprobetcp-common"
 version = "0.1.0"
 edition = "2021"
 
