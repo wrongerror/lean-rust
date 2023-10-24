@@ -16,4 +16,4 @@ tokio = { version = "1.25", features = ["macros", "rt", "rt-multi-thread", "net"
 
 [[bin]]
 name = "tcp-v4-connect"
-path = "src/user.rs"
+path = "src/main.rs"

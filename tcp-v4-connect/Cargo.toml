@@ -1,2 +1,2 @@
 [workspace]
-members = ["xtask", "tcp-v4-connect", "tcp-v4-connect-common"]
+members = ["xtask", "tcp-v4-connect", "tcp-v4-connect-user", "tcp-v4-connect-common"]
