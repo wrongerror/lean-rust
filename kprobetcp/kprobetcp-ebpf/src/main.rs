@@ -1,7 +1,7 @@
 #![no_std]
 #![no_main]
 
-use aya_bpf::{BpfContext, macros::{kprobe, map}, programs::ProbeContext, maps::HashMap};
+use aya_bpf::{macros::{kprobe, map}, programs::ProbeContext, maps::HashMap};
 use aya_log_ebpf::info;
 use aya_bpf::helpers::bpf_get_current_pid_tgid;
 
@@ -20,7 +20,7 @@ fn try_kprobetcp(ctx: ProbeContext) -> Result<u32, u32> {
     let pid = bpf_get_current_pid_tgid() as u32;
     let count: u32 = unsafe { CONNECTIONS.get(&pid).unwrap_or(&0) } + 1;
     CONNECTIONS.insert(&pid, &count, 0).unwrap();
-    info!(&ctx, "function tcp_connect called");
+    // info!(&ctx, "function tcp_connect called");
     Ok(0)
 }
 
