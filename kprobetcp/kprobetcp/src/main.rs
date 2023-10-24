@@ -40,7 +40,7 @@ async fn main() -> Result<(), anyhow::Error> {
     program.load()?;
     program.attach("tcp_connect", 0)?;
 
-    let mut map: HashMap<_, u32, u64> = HashMap::try_from(bpf.map_mut("CONNECTIONS").unwrap())?;
+    let map: HashMap<_, u32, u64> = HashMap::try_from(bpf.map_mut("CONNECTIONS").unwrap())?;
     for item in map.iter() {
         let (key, value) = item.unwrap();
         info!("{}: {}", key, value);
