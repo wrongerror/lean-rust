@@ -1,11 +1,11 @@
 #![no_std]
 #![no_main]
 
-use aya_bpf::{macros::kprobe, programs::ProbeContext, BpfContext, macros::map, maps::HashMap};
+use aya_bpf::{BpfContext, macros::{kprobe,map}, programs::ProbeContext, maps::HashMap};
 use aya_log_ebpf::info;
 
 #[map]
-static CONNECTIONS: HashMap<u32, u64> = HashMap::with_max_entries(10240, 0);
+static CONNECTIONS: HashMap<u32, u32> = HashMap::with_max_entries(1024, 0);
 
 #[kprobe]
 pub fn kprobetcp(ctx: ProbeContext) -> u32 {
