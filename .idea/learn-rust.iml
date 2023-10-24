@@ -12,10 +12,14 @@
       <sourceFolder url="file://$MODULE_DIR$/tcp-v4-connect/tcp-v4-connect-common/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tcp-v4-connect/tcp-v4-connect/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tcp-v4-connect/xtask/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/kprobetcp/kprobetcp-common/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/kprobetcp/kprobetcp/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/kprobetcp/xtask/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/myapp/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust-bootstrap/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust-wasm/target" />
       <excludeFolder url="file://$MODULE_DIR$/tcp-v4-connect/target" />
+      <excludeFolder url="file://$MODULE_DIR$/kprobetcp/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,5 +1,6 @@
 use aya::programs::KProbe;
 use aya::{include_bytes_aligned, Bpf};
+use aya::maps::HashMap;
 use aya_log::BpfLogger;
 use log::{info, warn, debug};
 use tokio::signal;
@@ -38,6 +39,11 @@ async fn main() -> Result<(), anyhow::Error> {
     let program: &mut KProbe = bpf.program_mut("kprobetcp").unwrap().try_into()?;
     program.load()?;
     program.attach("tcp_connect", 0)?;
+
+    let map = HashMap::try_from(bpf.map_mut("CONNECTIONS").unwrap())?;
+    for (pid, count) in map.keys().map(|key| (key, map.get(&key, 0).unwrap())) {
+        println!("pid: {}, count: {}", pid, count);
+    }
 
     info!("Waiting for Ctrl-C...");
     signal::ctrl_c().await?;
