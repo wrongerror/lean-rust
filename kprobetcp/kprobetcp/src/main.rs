@@ -25,11 +25,11 @@ async fn main() -> Result<(), anyhow::Error> {
     // like to specify the eBPF program at runtime rather than at compile-time, you can
     // reach for `Bpf::load_file` instead.
     #[cfg(debug_assertions)]
-    let mut bpf = Bpf::load(include_bytes_aligned!(
+        let mut bpf = Bpf::load(include_bytes_aligned!(
         "../../target/bpfel-unknown-none/debug/kprobetcp"
     ))?;
     #[cfg(not(debug_assertions))]
-    let mut bpf = Bpf::load(include_bytes_aligned!(
+        let mut bpf = Bpf::load(include_bytes_aligned!(
         "../../target/bpfel-unknown-none/release/kprobetcp"
     ))?;
     if let Err(e) = BpfLogger::init(&mut bpf) {
@@ -40,7 +40,7 @@ async fn main() -> Result<(), anyhow::Error> {
     program.load()?;
     program.attach("tcp_connect", 0)?;
 
-    let map = HashMap::try_from(bpf.map_mut("CONNECTIONS").unwrap())?;
+    let mut map: HashMap<_, u32, u64> = HashMap::try_from(bpf.map_mut("CONNECTIONS").unwrap())?;
     for item in map.iter() {
         let (key, value) = item.unwrap();
         info!("{}: {}", key, value);
