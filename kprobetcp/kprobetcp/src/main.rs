@@ -42,7 +42,7 @@ async fn main() -> Result<(), anyhow::Error> {
 
     let map = HashMap::try_from(bpf.map_mut("CONNECTIONS").unwrap())?;
     for item in map.iter() {
-        let (key, value) = item.unwrap()?;
+        let (key, value) = item.unwrap();
         info!("{}: {}", key, value);
     }
 
